@@ -1,0 +1,25 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on: [mongo]
+    ports:
+      - "4000:4000"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/corpus_studio
+      JWT_SECRET: ${JWT_SECRET:-please-change-this-secret}
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:4000}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@corpus.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
+    volumes:
+      - audio-data:/data/uploads   # original recordings + consent form photos
+
+volumes:
+  mongo-data:
+  audio-data:
