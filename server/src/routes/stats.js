@@ -35,11 +35,11 @@ statsRouter.get(
         consented: speakers.find((x) => x._id.c === 'granted')?.n || 0,
         withdrawn: speakers.find((x) => x._id.c === 'withdrawn')?.n || 0,
         recordings: r.n,
-        recordedHours: Number((r.sec / 3600).toFixed(2)),
+        recordedHours: Number((r.sec / 3600).toFixed(3)),
         flaggedRecordings: r.flagged,
         utterances: byStatus,
         uncertain: u.reduce((a, x) => a + x.uncertain, 0),
-        approvedHours: Number((approvedSec / 3600).toFixed(2)),
+        approvedHours: Number((approvedSec / 3600).toFixed(3)),
         targets: { speakers: TARGET_SPEAKERS, hours: TARGET_HOURS },
       };
     });

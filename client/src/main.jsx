@@ -45,7 +45,7 @@ function App() {
         <Route path="annotate/:id" element={<Guard roles={['annotator', 'reviewer']}><Annotate /></Guard>} />
         <Route path="review" element={<Guard roles={['reviewer']}><Review /></Guard>} />
         <Route path="export" element={<Guard roles={['reviewer']}><ExportPage /></Guard>} />
-        <Route path="users" element={<Guard roles={[]}><Users /></Guard>} />
+        <Route path="users" element={<Guard roles={['admin']}><Users /></Guard>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

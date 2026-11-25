@@ -166,7 +166,7 @@ export default function Annotate() {
   }
 
   const playSel = () => regions.current.getRegions().find((r) => r.id === sel?.regionId)?.play();
-  const locked = sel?.status === 'approved' && !can();
+  const locked = sel?.status === 'approved' && !can('admin');
   const lastReview = sel?.reviews?.at?.(-1);
 
   return (

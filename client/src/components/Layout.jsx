@@ -37,7 +37,7 @@ export default function Layout() {
     ['/annotate', t('annotate'), can('annotator')],
     ['/review', t('review'), can('reviewer')],
     ['/export', t('export'), can('reviewer')],
-    ['/users', t('users'), can()],
+    ['/users', t('users'), can('admin')],
   ].filter((l) => l[2]);
 
   return (
